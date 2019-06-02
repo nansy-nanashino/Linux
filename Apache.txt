@@ -1,0 +1,31 @@
+//yumリストを"httpd"で検索
+yum list | grep httpd
+//インストール
+sudo yum install httpd
+//Apacheの状態確認
+$ systemctl status httpd.service
+//Apacheの起動
+$ sudo systemctl start httpd.service
+//Apacheの再起動
+$ sudo systemctl restart httpd.service
+//Apacheの停止
+$ sudo systemctl stop httpd.service
+//Apacheの設定ファイルを開く
+$ vi /etc/httpd/conf/httpd.conf
+//Apacheの実行ディレクトリ
+DocumentRoot ~
+
+apacheが見に行くドキュメント
+DocumentRoot "/var/www/html"
+
+//apache自動起動on
+systemctl enable httpd.service
+//apache自動起動off
+systemctl disable サービス名.service
+//確認
+systemctl list-unit-files -t service | grep httpd
+
+//デフォルトのhtml
+<IfModule dir_module>
+    DirectoryIndex index.html
+</IfModule>
